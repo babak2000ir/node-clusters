@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-clusters-inspector",
+  "description": "Environment to test nodejs worker threads",
+  "version": "1.0.0",
+  "scripts": {
+    "start:server": "cd server && npm run dev",
+    "start:client": "cd client && npm start",
+    "start": "concurrently --timings true \"npm run start:client\" \"npm run start:server\" ",
+    "build": "cd client && npm run build && cd .. && cd server && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
