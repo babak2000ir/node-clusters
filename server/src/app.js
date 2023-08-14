@@ -13,11 +13,12 @@ import Router from 'koa-router';
 
 const numCPUs = availableParallelism();
 
+//cluster.schedulingPolicy = cluster.SCHED_RR;
 if (cluster.isPrimary) {
     console.log(`Primary ${process.pid} is running`);
 
     // Fork workers.
-    for (let i = 0; i < Math.min(numCPUs, 4); i++) {
+    for (let i = 0; i < Math.min(numCPUs, 4); i++) { //try 6 with SCHED_RR
       cluster.fork();
     }
   
